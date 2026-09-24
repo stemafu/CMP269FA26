@@ -1,10 +1,10 @@
 
-public class BetterArrayInts{
+public class BetterArrayInts implements ListInterface{
 	
 	/*
 	 * 
 	 * This class will be used to store a list of int values.
-	 * This list will ne dynamic. It will be able to grow as
+	 * This list will be dynamic. It will be able to grow as
 	 * you are adding elements.
 	 * 
 	 * 
@@ -32,6 +32,11 @@ public class BetterArrayInts{
 	}
 	
 	public BetterArrayInts(int capacity) {
+		
+		if(capacity <= 0) {
+			capacity = ARRAY_CAPACITY;
+		}
+		
 		this.elements = new int[capacity];
 		this.count = 0;
 	}
@@ -70,6 +75,19 @@ public class BetterArrayInts{
 	 */
 	public void add(int element) {
 		
+		/*
+		 * Any time. before we add an element, we will check to 
+		 * see if the base array where we are keeping the elements
+		 * is full.
+		 * 
+		 * If the base array is full, then we resize.
+		 */
+		
+		if(this.isFull()) {
+			
+			this.resize();
+			
+		}
 		
 		this.elements[this.count] = element;
 		this.count++;
@@ -82,6 +100,66 @@ public class BetterArrayInts{
 		 * insert (append) a new value in the list
 		 */
 		
+	}
+	
+	/*
+	 * This method returns true is the base array is full.
+	 */
+	private boolean isFull() {
+		
+		return (this.count == elements.length);
+	}
+	
+	
+	private void resize() {
+		
+		int [] elementsCopy = new int[elements.length * 2];
+		
+		for(int i = 0; i < this.count; i++) {
+			elementsCopy[i] = this.elements[i];
+		}
+		
+		
+		this.elements = elementsCopy;
+	}
+	
+
+
+	@Override
+	public void add(int num, int index) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int get(int index) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int remove(int index) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int replace(int num, int index) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void removeAll() {
+		this.elements = new int[ARRAY_CAPACITY];
+		this.count = 0;
+		
+	}
+
+	@Override
+	public String getAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	
@@ -97,8 +175,29 @@ public class BetterArrayInts{
 		b.add(89);
 		b.add(81);
 		b.add(79);
+		
+		
+		
+		int start = 10;
+		
+		for(int i = 0; i < 10_000_000; i++) {
+			
+			b.add(start);
+			start += 10;
+		}
+		
+		
+		
+		
+		
 		System.out.println(b.size());
 		System.out.println(b.isEmpty());
+		
+		b.removeAll();
+		
+		System.out.println("Size here should be 0 after removing all " + b.size());
+		System.out.println("isEmpty here should be true after removing all " + b.isEmpty());
+	   
 	}
 
 }

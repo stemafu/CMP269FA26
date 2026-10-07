@@ -131,11 +131,12 @@ public class BetterArrayInts implements ListInterface{
 
 
 	@Override
-	public void add(int num, int index) {
+	public void add(int num, int index) throws ArrayIndexOutOfBoundsException{
 		
 		
 		if(index < 0 || index > this.count) {
-			System.out.println("You provided an invalid index");
+			//System.out.println("You provided an invalid index");
+			throw new ArrayIndexOutOfBoundsException("You provided an invalid index " + index);
 		}else {
 			
 			if(this.isFull()) {
@@ -201,21 +202,27 @@ public class BetterArrayInts implements ListInterface{
 	
 
 	@Override
-	public int get(int index) {
+	public int get(int index) throws ArrayIndexOutOfBoundsException {
 		// We will assume that the index provided is valid
 		// We will address invalid indexes later.
+		
+		if(index < 0 || index >= this.count) {
+			throw new ArrayIndexOutOfBoundsException("You provided an invalid index " + index);
+		}
 		
 		
 		return this.elements[index];
 	}
 
 	@Override
-	public int remove(int index) {
+	public int remove(int index) throws ArrayIndexOutOfBoundsException {
 	
 		if(index < 0 || index >= this.count) {
 			// We need to fix this area
-			System.out.println("Invalid index " + index);
-			return -1;
+			//System.out.println("Invalid index " + index);
+			//return -1;
+			// This is now fixed
+			throw new ArrayIndexOutOfBoundsException("You provided an invalid index " + index);
 		}else {
 			int removedElement = this.get(index);
 			// int removedElement = this.elements[index];
@@ -237,7 +244,7 @@ public class BetterArrayInts implements ListInterface{
 	}
 
 	@Override
-	public int replace(int num, int index) {
+	public int replace(int num, int index) throws ArrayIndexOutOfBoundsException {
 
 		
 		/*
@@ -248,7 +255,8 @@ public class BetterArrayInts implements ListInterface{
 		
 		if(index < 0 || index >= this.count) {
 			
-			return -1; // We will address again this later
+			//return -1; // We will address again this later
+			throw new ArrayIndexOutOfBoundsException("You provided an invalid index " + index);
 		}else {
 			/*
 			 * Get the value(element) that is at the index in the array

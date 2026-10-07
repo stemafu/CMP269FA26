@@ -29,7 +29,7 @@ public interface ListInterface {
 	 * @param num
 	 * @param index
 	 */
-	public void add(int num, int index);
+	public void add(int num, int index) throws ArrayIndexOutOfBoundsException;
 	
 	/**
 	 * This method is used to return the element at the specified
@@ -38,7 +38,7 @@ public interface ListInterface {
 	 * What if the index is invalid? We will take care of this later.
 	 * @param index
 	 */
-	public int get(int index);
+	public int get(int index) throws ArrayIndexOutOfBoundsException;
 	
 	/**
 	 * This method removes and returns the element at the specified
@@ -47,7 +47,7 @@ public interface ListInterface {
 	 * What if the index is invalid? We will take care of this later.
 	 * @param index
 	 */
-	public int remove(int index);
+	public int remove(int index) throws ArrayIndexOutOfBoundsException;
 	
 	/**
 	 * This method replaces and returns the element at the specified
@@ -55,7 +55,7 @@ public interface ListInterface {
 	 * @param num
 	 * @param index
 	 */
-	public int replace(int num, int index);
+	public int replace(int num, int index) throws ArrayIndexOutOfBoundsException;
 	
 	
 	/**

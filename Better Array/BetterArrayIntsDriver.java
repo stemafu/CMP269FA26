@@ -15,6 +15,9 @@ public class BetterArrayIntsDriver {
 		b.add(81);
 		b.add(79);
 		
+		System.out.println( b.get(5));
+		
+		//System.out.println( b.get(15));
 		
 		System.out.println( b.get(5));
 		System.out.println( b.get(0));
@@ -43,7 +46,7 @@ public class BetterArrayIntsDriver {
 		}
 		
 		
-		/*
+		
 		int start = 10;
 		
 		for(int i = 0; i < 10_000_000; i++) {
@@ -51,7 +54,7 @@ public class BetterArrayIntsDriver {
 			b.add(start);
 			start += 10;
 		}
-		*/
+		/**/
 		
 		
 		

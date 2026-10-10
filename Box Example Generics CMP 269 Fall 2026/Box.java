@@ -1,5 +1,5 @@
 
-public class Box {
+public class Box  {
 	private int data;
 	
 	public Box(int data) {
@@ -12,6 +12,11 @@ public class Box {
 	
 	public int getData() {
 		return data;
+	}
+	
+	public static void main(String [] args) {
+		Box myBox = new Box(90);
+		
 	}
 
 }
